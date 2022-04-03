@@ -44,11 +44,19 @@ final class CounterViewController: UIViewController, View {
     return indicator
   }()
   
+  private let rightBarButton: UIBarButtonItem = {
+    var button = UIBarButtonItem()
+    button.title = "다른 페이지"
+    return button
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureUI()
     self.configureConstraints()
-
+    
+    self.title = "Counter"
+    self.navigationItem.rightBarButtonItem = rightBarButton
   }
   
   init(reactor: Reactor) {
@@ -102,6 +110,11 @@ final class CounterViewController: UIViewController, View {
       .bind(to: reactor.action)
       .disposed(by: self.disposeBag)
     
+    rightBarButton.rx.tap
+      .map { Reactor.Action.moveToAnotherPage }
+      .bind(to: reactor.action)
+      .disposed(by: self.disposeBag)
+    
     reactor.state
       .map { String($0.value) }
       .distinctUntilChanged()
@@ -121,6 +134,13 @@ final class CounterViewController: UIViewController, View {
         self?.showMessage($0)
       })
       .disposed(by: self.disposeBag)
+    
+    reactor.state
+      .compactMap { $0.pushToAnotherPage }
+      .bind(onNext: { [weak self] in
+        self?.moveToAnotherPage()
+      })
+      .disposed(by: self.disposeBag)
   }
 }
 
@@ -135,5 +155,10 @@ extension CounterViewController {
     
     self.present(alert, animated: true)
     
+  }
+  
+  private func moveToAnotherPage() {
+    let vc = ViewController()
+    self.navigationController?.pushViewController(vc, animated: true)
   }
 }

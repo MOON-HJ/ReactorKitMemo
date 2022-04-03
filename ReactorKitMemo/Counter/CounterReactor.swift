@@ -14,24 +14,28 @@ class CounterReactor: Reactor {
   enum Action {
     case increase
     case decrease
+    case moveToAnotherPage
   }
   
   enum Mutation {
     case increaseValue
     case decreaseValue
     case loading(Bool)
+    case moveToAnotherPage
   }
   
   struct State {
     var value: Int
     var indicatorVisible: Bool
     var alertMessage: String?
+    var pushToAnotherPage: Void?
   }
   
   init() {
     self.initialState = .init(value: 0,
                               indicatorVisible: false,
-                              alertMessage: nil)
+                              alertMessage: nil,
+                              pushToAnotherPage: nil)
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
@@ -50,11 +54,14 @@ class CounterReactor: Reactor {
         .delay(.milliseconds(20), scheduler: MainScheduler.instance),
         .just(.loading(false))
       ])
+    case .moveToAnotherPage:
+      return .just(.moveToAnotherPage)
     }
   }
   
   func reduce(state: State, mutation: Mutation) -> State {
     var state = state
+    state.pushToAnotherPage = nil
     switch mutation {
     case .increaseValue:
       state = increaseValue(state: state)
@@ -62,6 +69,8 @@ class CounterReactor: Reactor {
       state = decreaseValue(state: state)
     case .loading(let visible):
       state.indicatorVisible = visible
+    case .moveToAnotherPage:
+      state.pushToAnotherPage = ()
     }
     return state
   }
