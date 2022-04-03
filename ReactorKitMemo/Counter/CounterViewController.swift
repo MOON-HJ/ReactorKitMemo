@@ -7,8 +7,13 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import ReactorKit
 
-class CounterViewController: UIViewController {
+final class CounterViewController: UIViewController, View {
+  typealias Reactor = CounterReactor
+  var disposeBag = DisposeBag()
+  
   private let increaseButton: UIButton = {
     var button = UIButton()
     button.setTitle("+", for: .normal)
@@ -40,8 +45,9 @@ class CounterViewController: UIViewController {
 
   }
   
-  init() {
+  init(reactor: Reactor) {
     super.init(nibName: nil, bundle: nil)
+    self.reactor = reactor
   }
     
   required init?(coder: NSCoder) {
@@ -71,5 +77,24 @@ class CounterViewController: UIViewController {
       $0.centerY.equalToSuperview()
       $0.right.equalToSuperview().offset(-24)
     }
+  }
+  
+  // MARK: Bind Reactor
+  func bind(reactor: CounterReactor) {
+    decreaseButton.rx.tap
+      .map { Reactor.Action.decrease }
+      .bind(to: reactor.action)
+      .disposed(by: self.disposeBag)
+    
+    increaseButton.rx.tap
+      .map { Reactor.Action.increase }
+      .bind(to: reactor.action)
+      .disposed(by: self.disposeBag)
+    
+    reactor.state
+      .map { String($0.value) }
+      .distinctUntilChanged()
+      .bind(to: label.rx.text)
+      .disposed(by: self.disposeBag)
   }
 }
