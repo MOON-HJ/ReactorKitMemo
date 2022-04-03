@@ -38,6 +38,12 @@ final class CounterViewController: UIViewController, View {
     return label
   }()
   
+  private let indicator: UIActivityIndicatorView = {
+    var indicator = UIActivityIndicatorView()
+    indicator.hidesWhenStopped = true
+    return indicator
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureUI()
@@ -56,7 +62,7 @@ final class CounterViewController: UIViewController, View {
   
   private func configureUI() {
     self.view.backgroundColor = .systemBackground
-    [increaseButton, label, decreaseButton].forEach {
+    [increaseButton, label, decreaseButton, indicator].forEach {
       self.view.addSubview($0)
     }
   }
@@ -77,6 +83,11 @@ final class CounterViewController: UIViewController, View {
       $0.centerY.equalToSuperview()
       $0.right.equalToSuperview().offset(-24)
     }
+    
+    indicator.snp.makeConstraints {
+      $0.centerX.equalToSuperview()
+      $0.centerY.equalToSuperview().multipliedBy(0.5)
+    }
   }
   
   // MARK: Bind Reactor
@@ -95,6 +106,11 @@ final class CounterViewController: UIViewController, View {
       .map { String($0.value) }
       .distinctUntilChanged()
       .bind(to: label.rx.text)
+      .disposed(by: self.disposeBag)
+    
+    reactor.state
+      .map { $0.indicatorVisible }
+      .bind(to: indicator.rx.isAnimating )
       .disposed(by: self.disposeBag)
   }
 }
