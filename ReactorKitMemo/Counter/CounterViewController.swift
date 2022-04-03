@@ -110,7 +110,30 @@ final class CounterViewController: UIViewController, View {
     
     reactor.state
       .map { $0.indicatorVisible }
-      .bind(to: indicator.rx.isAnimating )
+      .bind(to: indicator.rx.isAnimating,
+            increaseButton.rx.isHidden,
+            decreaseButton.rx.isHidden)
       .disposed(by: self.disposeBag)
+  
+    reactor.state
+      .compactMap { $0.alertMessage }
+      .bind(onNext: { [weak self] in
+        self?.showMessage($0)
+      })
+      .disposed(by: self.disposeBag)
+  }
+}
+
+// MARK: - Bind Method
+extension CounterViewController {
+  private func showMessage(_ message: String?) {
+    let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
+    let alertAction = UIAlertAction(title: "확인", style: .cancel) { [weak self] _ in
+      self?.dismiss(animated: true)
+    }
+    alert.addAction(alertAction)
+    
+    self.present(alert, animated: true)
+    
   }
 }

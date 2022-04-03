@@ -19,35 +19,36 @@ class CounterReactor: Reactor {
   enum Mutation {
     case increaseValue
     case decreaseValue
-    case showLoadIndicator(Bool)
+    case loading(Bool)
   }
   
   struct State {
     var value: Int
     var indicatorVisible: Bool
+    var alertMessage: String?
   }
   
   init() {
     self.initialState = .init(value: 0,
-                              indicatorVisible: false)
+                              indicatorVisible: false,
+                              alertMessage: nil)
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .increase:
       return .concat([
-        .just(.showLoadIndicator(true)),
+        .just(.loading(true)),
         .just(.increaseValue)
-        .delay(.seconds(1), scheduler: MainScheduler.instance),
-        .just(.showLoadIndicator(false))
+        .delay(.milliseconds(20), scheduler: MainScheduler.instance),
+        .just(.loading(false))
       ])
     case .decrease:
       return .concat([
-        .just(.showLoadIndicator(true)),
+        .just(.loading(true)),
         .just(.decreaseValue)
-        .delay(.seconds(1), scheduler: MainScheduler.instance),
-        .just(.showLoadIndicator(false))
-
+        .delay(.milliseconds(20), scheduler: MainScheduler.instance),
+        .just(.loading(false))
       ])
     }
   }
@@ -56,11 +57,36 @@ class CounterReactor: Reactor {
     var state = state
     switch mutation {
     case .increaseValue:
-      state.value += 1
+      state = increaseValue(state: state)
     case .decreaseValue:
-      state.value -= 1
-    case .showLoadIndicator(let visible):
+      state = decreaseValue(state: state)
+    case .loading(let visible):
       state.indicatorVisible = visible
+    }
+    return state
+  }
+}
+
+// MARK: - Reduce Method
+extension CounterReactor {
+  private func increaseValue(state: State) -> State {
+    var state = state
+    if state.value >= 10 {
+      state.alertMessage = "값이 10 이상입니다"
+    } else {
+      state.alertMessage = nil
+      state.value += 1
+    }
+    return state
+  }
+  
+  private func decreaseValue(state: State) -> State {
+    var state = state
+    if state.value >= -10 {
+      state.value -= 1
+      state.alertMessage = nil
+    } else {
+      state.alertMessage = "값이 -10 미만입니다"
     }
     return state
   }
