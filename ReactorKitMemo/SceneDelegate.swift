@@ -13,8 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: windowScene)
-    let reactor = CounterReactor()
-    let mainViewController = CounterViewController(reactor: reactor)
+//    let reactor = CounterReactor()
+//    let mainViewController = CounterViewController(reactor: reactor)
+    
+    let reactor = MemoListReactor()
+    let mainViewController = MemoListViewController(reactor: reactor)
     
     let navigation = UINavigationController(rootViewController: mainViewController)
 
