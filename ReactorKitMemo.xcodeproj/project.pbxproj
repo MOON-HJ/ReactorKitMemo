@@ -10,6 +10,7 @@
 		731C53D82809A2A500230FA7 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 731C53D72809A2A500230FA7 /* RxDataSources */; };
 		731C53DD2809A2F700230FA7 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DC2809A2F700230FA7 /* MemoListViewController.swift */; };
 		731C53DF2809A47E00230FA7 /* MemoListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DE2809A47E00230FA7 /* MemoListReactor.swift */; };
+		731C53E22809AB7700230FA7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 731C53E12809AB7700230FA7 /* Then */; };
 		73AA491F27F9894A0054B18D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA491E27F9894A0054B18D /* AppDelegate.swift */; };
 		73AA492127F9894A0054B18D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA492027F9894A0054B18D /* SceneDelegate.swift */; };
 		73AA492327F9894A0054B18D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA492227F9894A0054B18D /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 				73E9870127F9A2E2001B3695 /* RxCocoa in Frameworks */,
 				73E986F627F9961C001B3695 /* ReactorKit in Frameworks */,
 				73E9870527F9A2E2001B3695 /* RxSwift in Frameworks */,
+				731C53E22809AB7700230FA7 /* Then in Frameworks */,
 				731C53D82809A2A500230FA7 /* RxDataSources in Frameworks */,
 				73E9870327F9A2E2001B3695 /* RxRelay in Frameworks */,
 				73E986F927F99631001B3695 /* SnapKit in Frameworks */,
@@ -127,6 +129,7 @@
 				73E9870227F9A2E2001B3695 /* RxRelay */,
 				73E9870427F9A2E2001B3695 /* RxSwift */,
 				731C53D72809A2A500230FA7 /* RxDataSources */,
+				731C53E12809AB7700230FA7 /* Then */,
 			);
 			productName = ReactorKitMemo;
 			productReference = 73AA491B27F9894A0054B18D /* ReactorKitMemo.app */;
@@ -161,6 +164,7 @@
 				73E986F727F99631001B3695 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				73E986FF27F9A2E2001B3695 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				731C53D62809A2A500230FA7 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				731C53E02809AB7700230FA7 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 73AA491C27F9894A0054B18D /* Products */;
 			projectDirPath = "";
@@ -412,6 +416,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		731C53E02809AB7700230FA7 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		73E986F427F9961C001B3695 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
@@ -443,6 +455,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 731C53D62809A2A500230FA7 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		731C53E12809AB7700230FA7 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 731C53E02809AB7700230FA7 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 		73E986F527F9961C001B3695 /* ReactorKit */ = {
 			isa = XCSwiftPackageProductDependency;
