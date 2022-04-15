@@ -7,10 +7,28 @@
 
 import UIKit
 import ReactorKit
+import Then
+import RxDataSources
 
 final class MemoListViewController: UIViewController, View {
   typealias Reactor = MemoListReactor
+  typealias Section = RxTableViewSectionedReloadDataSource<MemoListSection>
   var disposeBag = DisposeBag()
+  
+  let dataSource: Section = Section(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
+    switch item {
+    case .item:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoListItemCell.id) else { return UITableViewCell() }
+      return cell
+    }
+  })
+  
+  private let listView = UITableView().then {
+    $0.rowHeight = UITableView.automaticDimension
+    $0.estimatedRowHeight = UITableView.automaticDimension
+    
+    $0.register(MemoListItemCell.self, forCellReuseIdentifier: MemoListItemCell.id)
+  }
 
   init(reactor: Reactor) {
     super.init(nibName: nil, bundle: nil)
@@ -31,15 +49,18 @@ final class MemoListViewController: UIViewController, View {
     
   private func configureUI() {
     self.view.backgroundColor = .systemBackground
-    [].forEach {
+    [listView].forEach {
       self.view.addSubview($0)
     }
   }
   
   private func configureConstraints() {
+    listView.snp.makeConstraints {
+      $0.edges.equalTo(view.safeAreaLayoutGuide)
+    }
   }
 
-  func bind(reactor: MemoListReactor) {
+  func bind(reactor: Reactor) {
 
   }
 }

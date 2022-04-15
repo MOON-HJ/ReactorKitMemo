@@ -21,7 +21,7 @@
     {
       "identity" : "rxswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "location" : "https://github.com/ReactiveX/RxSwift",
       "state" : {
         "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
         "version" : "6.5.0"
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",
       "state" : {
-        "revision" : "d458564516e5676af9c70b4f4b2a9178294f1bc6",
-        "version" : "5.0.1"
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
       }
     },
     {
