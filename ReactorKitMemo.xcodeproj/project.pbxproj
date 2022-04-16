@@ -19,6 +19,7 @@
 		73AA492327F9894A0054B18D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA492227F9894A0054B18D /* ViewController.swift */; };
 		73AA492827F9894E0054B18D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AA492727F9894E0054B18D /* Assets.xcassets */; };
 		73AA492B27F9894E0054B18D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AA492927F9894E0054B18D /* LaunchScreen.storyboard */; };
+		73AFFFF6280B0CD300454C2B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AFFFF5280B0CD300454C2B /* BaseTableViewCell.swift */; };
 		73E986F627F9961C001B3695 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 73E986F527F9961C001B3695 /* ReactorKit */; };
 		73E986F927F99631001B3695 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 73E986F827F99631001B3695 /* SnapKit */; };
 		73E986FC27F99690001B3695 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E986FB27F99690001B3695 /* CounterViewController.swift */; };
@@ -41,6 +42,7 @@
 		73AA492727F9894E0054B18D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73AA492A27F9894E0054B18D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73AA492C27F9894E0054B18D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73AFFFF5280B0CD300454C2B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		73E986FB27F99690001B3695 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		73E986FD27F99F6D001B3695 /* CounterReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 		73AA491D27F9894A0054B18D /* ReactorKitMemo */ = {
 			isa = PBXGroup;
 			children = (
+				73AFFFF4280B0CB000454C2B /* UISupport */,
 				731C53D92809A2C000230FA7 /* List */,
 				73E986FA27F9963F001B3695 /* Counter */,
 				73AA491E27F9894A0054B18D /* AppDelegate.swift */,
@@ -104,6 +107,14 @@
 				73AA492C27F9894E0054B18D /* Info.plist */,
 			);
 			path = ReactorKitMemo;
+			sourceTree = "<group>";
+		};
+		73AFFFF4280B0CB000454C2B /* UISupport */ = {
+			isa = PBXGroup;
+			children = (
+				73AFFFF5280B0CD300454C2B /* BaseTableViewCell.swift */,
+			);
+			path = UISupport;
 			sourceTree = "<group>";
 		};
 		73E986FA27F9963F001B3695 /* Counter */ = {
@@ -206,6 +217,7 @@
 				7301B0F5280AC38C00213657 /* MemoListItem.swift in Sources */,
 				73E986FE27F99F6D001B3695 /* CounterReactor.swift in Sources */,
 				731C53DD2809A2F700230FA7 /* MemoListViewController.swift in Sources */,
+				73AFFFF6280B0CD300454C2B /* BaseTableViewCell.swift in Sources */,
 				73E986FC27F99690001B3695 /* CounterViewController.swift in Sources */,
 				73AA491F27F9894A0054B18D /* AppDelegate.swift in Sources */,
 				731C53DF2809A47E00230FA7 /* MemoListReactor.swift in Sources */,
