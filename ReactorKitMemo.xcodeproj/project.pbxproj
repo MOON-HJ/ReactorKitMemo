@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7301B0F5280AC38C00213657 /* MemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301B0F4280AC38C00213657 /* MemoListItem.swift */; };
 		731C53D82809A2A500230FA7 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 731C53D72809A2A500230FA7 /* RxDataSources */; };
 		731C53DD2809A2F700230FA7 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DC2809A2F700230FA7 /* MemoListViewController.swift */; };
 		731C53DF2809A47E00230FA7 /* MemoListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DE2809A47E00230FA7 /* MemoListReactor.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7301B0F4280AC38C00213657 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
 		731C53DC2809A2F700230FA7 /* MemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		731C53DE2809A47E00230FA7 /* MemoListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListReactor.swift; sourceTree = "<group>"; };
 		738D90352809B4FF00A65A8E /* MemoListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListSection.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				738D90352809B4FF00A65A8E /* MemoListSection.swift */,
 				731C53DC2809A2F700230FA7 /* MemoListViewController.swift */,
 				731C53DE2809A47E00230FA7 /* MemoListReactor.swift */,
+				7301B0F4280AC38C00213657 /* MemoListItem.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				738D90382809B50000A65A8E /* MemoListItemCell.swift in Sources */,
 				73AA492327F9894A0054B18D /* ViewController.swift in Sources */,
+				7301B0F5280AC38C00213657 /* MemoListItem.swift in Sources */,
 				73E986FE27F99F6D001B3695 /* CounterReactor.swift in Sources */,
 				731C53DD2809A2F700230FA7 /* MemoListViewController.swift in Sources */,
 				73E986FC27F99690001B3695 /* CounterViewController.swift in Sources */,

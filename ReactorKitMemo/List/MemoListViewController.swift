@@ -17,8 +17,9 @@ final class MemoListViewController: UIViewController, View {
   
   let dataSource: Section = Section(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
     switch item {
-    case .item:
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoListItemCell.id) else { return UITableViewCell() }
+    case .item(let item):
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoListItemCell.id) as? MemoListItemCell else { return UITableViewCell() }
+      cell.configure(item: item)
       return cell
     }
   })

@@ -22,5 +22,5 @@ extension MemoListSection: SectionModelType {
 }
 
 enum MemoListSectionItem {
-  case item
+  case item(MemoListItem)
 }

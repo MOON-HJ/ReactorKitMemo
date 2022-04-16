@@ -9,6 +9,7 @@ import UIKit
 
 class MemoListItemCell: UITableViewCell {
   static let id: String = "MemoListItemCell"
+  private var item: MemoListItem?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -16,6 +17,10 @@ class MemoListItemCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+  }
+  
+  public func configure(item: MemoListItem) {
+    self.item = item
   }
 }
 
