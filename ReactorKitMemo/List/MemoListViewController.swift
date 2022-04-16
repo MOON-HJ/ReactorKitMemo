@@ -62,6 +62,9 @@ final class MemoListViewController: UIViewController, View {
   }
 
   func bind(reactor: Reactor) {
-
+    reactor.state
+      .map { $0.items }
+      .bind(to: listView.rx.items(dataSource: dataSource))
+      .disposed(by: self.disposeBag)
   }
 }

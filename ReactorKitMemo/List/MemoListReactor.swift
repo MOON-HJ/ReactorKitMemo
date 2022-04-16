@@ -9,7 +9,14 @@ import Foundation
 import ReactorKit
 
 final class MemoListReactor: Reactor {
+  typealias Section = MemoListSection
+  
   var initialState: State
+  private var sections: [Section] = [
+    Section(identity: .items, items: [
+      .item(.init(title: "헬로월드"))
+    ])
+  ]
   
   enum Action {
   }
@@ -18,10 +25,11 @@ final class MemoListReactor: Reactor {
   }
   
   struct State {
+    let items: [Section]
   }
   
   init() {
-    self.initialState = .init()
+    self.initialState = .init(items: sections)
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
