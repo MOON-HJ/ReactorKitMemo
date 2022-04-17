@@ -33,6 +33,10 @@ final class MemoListViewController: UIViewController, View {
     
     $0.register(MemoListItemCell.self, forCellReuseIdentifier: MemoListItemCell.id)
   }
+  
+  private let indicator = UIActivityIndicatorView().then {
+    $0.hidesWhenStopped = true
+  }
 
   init(reactor: Reactor) {
     super.init(nibName: nil, bundle: nil)
@@ -53,7 +57,7 @@ final class MemoListViewController: UIViewController, View {
     
   private func configureUI() {
     self.view.backgroundColor = .systemBackground
-    [listView].forEach {
+    [listView, indicator].forEach {
       self.view.addSubview($0)
     }
   }
@@ -61,6 +65,10 @@ final class MemoListViewController: UIViewController, View {
   private func configureConstraints() {
     listView.snp.makeConstraints {
       $0.edges.equalTo(view.safeAreaLayoutGuide)
+    }
+    
+    indicator.snp.makeConstraints {
+      $0.center.equalToSuperview()
     }
   }
 
@@ -73,6 +81,12 @@ final class MemoListViewController: UIViewController, View {
     reactor.state
       .map { $0.items }
       .bind(to: listView.rx.items(dataSource: dataSource))
+      .disposed(by: self.disposeBag)
+    
+    reactor.state
+      .map { $0.indicatorVisible }
+      .distinctUntilChanged()
+      .bind(to: indicator.rx.isAnimating)
       .disposed(by: self.disposeBag)
   }
 }

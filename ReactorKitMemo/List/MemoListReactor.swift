@@ -12,9 +12,6 @@ final class MemoListReactor: Reactor {
   typealias Section = MemoListSection
   
   var initialState: State
-  private var sections: [Section] = [
-    Section(identity: .items, items: [])
-  ]
   
   enum Action {
     case fetch
@@ -22,21 +19,26 @@ final class MemoListReactor: Reactor {
   
   enum Mutation {
     case fetchList
+    case loading(Bool)
   }
   
   struct State {
     var items: [Section]
+    var indicatorVisible: Bool
   }
   
   init() {
-    self.initialState = .init(items: sections)
+    self.initialState = .init(items: [],
+                              indicatorVisible: false)
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .fetch:
       return .concat([
-        .just(.fetchList)
+        .just(.loading(true)),
+        .just(.fetchList).delay(.milliseconds(500), scheduler: MainScheduler.instance),
+        .just(.loading(false))
       ])
     }
   }
@@ -46,6 +48,8 @@ final class MemoListReactor: Reactor {
     switch mutation {
     case .fetchList:
       state = fetchList(state: state)
+    case .loading(let visible):
+      state.indicatorVisible = visible
     }
     
     return state
