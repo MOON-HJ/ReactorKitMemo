@@ -13,7 +13,6 @@ class MemoListItemCell: BaseTableViewCell {
   private var item: MemoListItem?
   
   private let titleLabel = UILabel().then {
-    $0.backgroundColor = .systemGreen
     $0.textColor = .black
     $0.font = .systemFont(ofSize: 16)
     $0.sizeToFit()
@@ -37,7 +36,6 @@ class MemoListItemCell: BaseTableViewCell {
   
   override func configureUI() {
     super.configureUI()
-    contentView.backgroundColor = .lightGray
     
     [titleLabel].forEach {
       contentView.addSubview($0)
@@ -47,7 +45,8 @@ class MemoListItemCell: BaseTableViewCell {
   override func setupConstraints() {
     super.setupConstraints()
     titleLabel.snp.makeConstraints {
-      $0.edges.equalToSuperview()
+      $0.top.left.equalToSuperview().offset(16)
+      $0.right.bottom.equalToSuperview().offset(-16)
     }
   }
 }

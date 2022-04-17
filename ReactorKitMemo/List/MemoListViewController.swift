@@ -6,9 +6,12 @@
 //
 
 import UIKit
+
+import RxCocoa
+import RxSwift
+import RxDataSources
 import ReactorKit
 import Then
-import RxDataSources
 
 final class MemoListViewController: UIViewController, View {
   typealias Reactor = MemoListReactor
@@ -62,6 +65,11 @@ final class MemoListViewController: UIViewController, View {
   }
 
   func bind(reactor: Reactor) {
+    rx.viewDidAppear.take(1)
+      .map { _ in Reactor.Action.fetch }
+      .bind(to: reactor.action)
+      .disposed(by: self.disposeBag)
+    
     reactor.state
       .map { $0.items }
       .bind(to: listView.rx.items(dataSource: dataSource))
