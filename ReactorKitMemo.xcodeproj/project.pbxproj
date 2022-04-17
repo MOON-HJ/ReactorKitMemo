@@ -12,6 +12,7 @@
 		731C53DD2809A2F700230FA7 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DC2809A2F700230FA7 /* MemoListViewController.swift */; };
 		731C53DF2809A47E00230FA7 /* MemoListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C53DE2809A47E00230FA7 /* MemoListReactor.swift */; };
 		731C53E22809AB7700230FA7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 731C53E12809AB7700230FA7 /* Then */; };
+		73635BBF280C4BF50057AA16 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73635BBE280C4BF50057AA16 /* UIViewController+Rx.swift */; };
 		738D90372809B50000A65A8E /* MemoListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738D90352809B4FF00A65A8E /* MemoListSection.swift */; };
 		738D90382809B50000A65A8E /* MemoListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738D90362809B4FF00A65A8E /* MemoListItemCell.swift */; };
 		73AA491F27F9894A0054B18D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AA491E27F9894A0054B18D /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		7301B0F4280AC38C00213657 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
 		731C53DC2809A2F700230FA7 /* MemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		731C53DE2809A47E00230FA7 /* MemoListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListReactor.swift; sourceTree = "<group>"; };
+		73635BBE280C4BF50057AA16 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		738D90352809B4FF00A65A8E /* MemoListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListSection.swift; sourceTree = "<group>"; };
 		738D90362809B4FF00A65A8E /* MemoListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListItemCell.swift; sourceTree = "<group>"; };
 		73AA491B27F9894A0054B18D /* ReactorKitMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				73AFFFF5280B0CD300454C2B /* BaseTableViewCell.swift */,
+				73635BBE280C4BF50057AA16 /* UIViewController+Rx.swift */,
 			);
 			path = UISupport;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				73AA491F27F9894A0054B18D /* AppDelegate.swift in Sources */,
 				731C53DF2809A47E00230FA7 /* MemoListReactor.swift in Sources */,
 				73AA492127F9894A0054B18D /* SceneDelegate.swift in Sources */,
+				73635BBF280C4BF50057AA16 /* UIViewController+Rx.swift in Sources */,
 				738D90372809B50000A65A8E /* MemoListSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
